@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "modules": {
+    "lms-module": {
+      "version": "2.1.0",
+      "url": "file:///Users/cyan/Workspace/Personal/electron-vibe-app/test-modules/lms-module-2.1.0.zip",
+      "size": 883,
+      "checksum": "836dd5fd70e973fdcf00a054fb7d0b29f3a3c267b055d6332f21fa4992b1a9d9"
+    },
+    "nhms-module": {
+      "version": "1.5.2",
+      "url": "file:///Users/cyan/Workspace/Personal/electron-vibe-app/test-modules/nhms-module-1.5.2.zip",
+      "size": 874,
+      "checksum": "dfb2d3cccc921ae71e2c4446c7cb83c9de3422cf439ea6c38ad8ad35a481efd0"
+    },
+    "pms-module": {
+      "version": "3.0.1",
+      "url": "file:///Users/cyan/Workspace/Personal/electron-vibe-app/test-modules/pms-module-3.0.1.zip",
+      "size": 865,
+      "checksum": "fb8b80025ebab8b4cfe0261d4ed234891580da43708d3c90e7930e7f83e9c1dc"
+    },
+    "base-ui-module": {
+      "version": "1.2.0",
+      "url": "file:///Users/cyan/Workspace/Personal/electron-vibe-app/test-modules/base-ui-module-1.2.0.zip",
+      "size": 835,
+      "checksum": "7afa46393f8d946ed4e9bfec6c398104f40d8ffaf5d5b5d39cadc9fb197ccdb1"
+    }
+  }
+}
