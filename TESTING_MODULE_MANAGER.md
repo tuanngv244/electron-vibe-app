@@ -186,3 +186,5 @@ npx tsc
 5. 🔲 Implement resume download
 6. 🔲 Add retry logic
 7. 🔲 Add module uninstall feature
+
+token: glpat-j018yUoQmXhSM1BMpMC6z286MQp1OmptbXo0Cw.01.121kj9onw

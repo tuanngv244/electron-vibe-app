@@ -45,7 +45,7 @@ const pendingCount = computed(() => {
           <span class="text-h5">Module Manager</span>
           <VSpacer />
           <IconBtn @click="isDialogVisible = false">
-            <VIcon icon="mdi-close" />
+            <VIcon icon="tabler-remove" />
           </IconBtn>
         </VCardTitle>
 

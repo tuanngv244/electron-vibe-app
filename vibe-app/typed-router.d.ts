@@ -131,7 +131,6 @@ declare module 'vue-router/auto-routes' {
     'base-ui-apps-email-label': RouteRecordInfo<'base-ui-apps-email-label', '/base-ui/apps/email/:label', { label: ParamValue<true> }, { label: ParamValue<false> }>,
     'forgot-password': RouteRecordInfo<'forgot-password', '/forgot-password', Record<never, never>, Record<never, never>>,
     'login': RouteRecordInfo<'login', '/login', Record<never, never>, Record<never, never>>,
-    'module-manager': RouteRecordInfo<'module-manager', '/module-manager', Record<never, never>, Record<never, never>>,
     'nhms-care-nursing': RouteRecordInfo<'nhms-care-nursing', '/nhms/care-nursing', Record<never, never>, Record<never, never>>,
     'nhms-contracts-finance': RouteRecordInfo<'nhms-contracts-finance', '/nhms/contracts-finance', Record<never, never>, Record<never, never>>,
     'nhms-dashboard': RouteRecordInfo<'nhms-dashboard', '/nhms/dashboard', Record<never, never>, Record<never, never>>,

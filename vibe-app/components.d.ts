@@ -45,7 +45,6 @@ declare module 'vue' {
     EnableOneTimePasswordDialog: typeof import('./src/components/dialogs/EnableOneTimePasswordDialog.vue')['default']
     ErrorHeader: typeof import('./src/components/ErrorHeader.vue')['default']
     I18n: typeof import('./src/@core/components/I18n.vue')['default']
-    ModuleManager: typeof import('./src/components/ModuleManager.vue')['default']
     ModuleNotification: typeof import('./src/components/ModuleNotification.vue')['default']
     ModulePlaceholder: typeof import('./src/components/ModulePlaceholder.vue')['default']
     MoreBtn: typeof import('./src/@core/components/MoreBtn.vue')['default']

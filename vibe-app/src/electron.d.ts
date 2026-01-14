@@ -7,6 +7,9 @@ export interface ElectronAPI {
     getInstalledModules: () => Promise<string[]>
     downloadModule: (moduleName: string) => Promise<boolean>
     onDownloadProgress: (callback: (data: { moduleName: string; progress: number }) => void) => void
+    onUpdateAvailable: (callback: () => void) => void
+    onUpdateDownloaded: (callback: () => void) => void
+    restartApp: () => Promise<void>
 }
 
 declare global {

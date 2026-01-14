@@ -42,10 +42,17 @@ const worker = setupWorker(
 export default function () {
   const workerUrl = `${import.meta.env.BASE_URL ?? '/'}mockServiceWorker.js`
 
+  console.log('🔧 Initializing MSW (Mock Service Worker)...')
+  console.log('📍 Worker URL:', workerUrl)
+
   worker.start({
     serviceWorker: {
       url: workerUrl,
     },
     onUnhandledRequest: 'bypass',
+  }).then(() => {
+    console.log('✅ MSW started successfully')
+  }).catch((error) => {
+    console.error('❌ MSW failed to start:', error)
   })
 }

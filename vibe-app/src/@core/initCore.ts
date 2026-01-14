@@ -81,9 +81,29 @@ const _syncInitialLoaderTheme = () => {
   )
 }
 
+const _checkElectronAppUpdated = () => {
+  const isElectron = window && window.electronAPI
+  if (!isElectron) return
+
+  // Listen for update available event
+  window.electronAPI.onUpdateAvailable(() => {
+    console.log('🔄 Đang tải bản cập nhật mới...')
+    // Có thể hiển thị notification hoặc snackbar ở đây
+  })
+
+  // Listen for update downloaded event
+  window.electronAPI.onUpdateDownloaded(() => {
+    const shouldRestart = confirm('Có phiên bản mới đã được tải về. Bạn có muốn khởi động lại ứng dụng để cập nhật không?')
+    if (shouldRestart) {
+      window.electronAPI.restartApp()
+    }
+  })
+}
+
 const initCore = () => {
   _syncInitialLoaderTheme()
   _handleSkinChanges()
+  // _checkElectronAppUpdated()
 
   // ℹ️ We don't want to trigger i18n in SK
   if (themeConfig.app.i18n.enable)
