@@ -2,9 +2,6 @@ stages:
   - build
   - publish
 
-variables:
-  NODE_ENV: production
-
 build_electron:
   stage: build
   image: node:20
@@ -16,9 +13,10 @@ build_electron:
     - cd vibe-app
     # Skip postinstall scripts (icons/msw not needed for production)
     - npm pkg set scripts.postinstall="echo 'Skipping postinstall in CI'"
-    # Install all dependencies (handles missing package-lock.json gracefully)
-    - npm install --prefer-offline --no-audit
-    - npm run build
+    # Install ALL dependencies including devDependencies (needed for build tools)
+    - npm install --prefer-offline --no-audit --include=dev
+    # Set NODE_ENV for the build process only
+    - NODE_ENV=production npm run build
     - cd ..
 
     # Bước 3: Compile TypeScript (Electron main process)
