@@ -11,10 +11,11 @@ build_electron:
 
     # Bước 2: Build Vue app
     - cd vibe-app
-    # Skip postinstall scripts (icons/msw not needed for production)
+
     - npm pkg set scripts.postinstall="echo 'Skipping postinstall in CI'"
-    # Install ALL dependencies including devDependencies (needed for build tools)
+
     - npm install --prefer-offline --no-audit --include=dev
+
     # Set NODE_ENV for the build process only
     - NODE_ENV=production npm run build
     - cd ..
@@ -22,15 +23,15 @@ build_electron:
     # Bước 3: Compile TypeScript (Electron main process)
     - npx tsc
 
-    # Bước 4: Build Electron app (đóng gói tất cả)
-    - npx electron-builder --win --mac --linux
+    # Bước 4: Build Electron app (chỉ Linux vì đang chạy trên Linux runner)
+    # Note: macOS build cần macOS runner, Windows build cần Wine hoặc Windows runner
+    - npx electron-builder --linux
   artifacts:
     paths:
-      - dist/*.exe
-      - dist/*.dmg
       - dist/*.AppImage
       - dist/*.deb
       - dist/*.rpm
+      - dist/*.snap
     expire_in: 1 week
 
 publish_release:
