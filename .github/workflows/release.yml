@@ -120,11 +120,13 @@ jobs:
 
       - name: Create release and upload files
         uses: softprops/action-gh-release@v2
+        continue-on-error: true
         with:
           tag_name: ${{ github.event_name == 'workflow_dispatch' && steps.version.outputs.tag || github.ref_name }}
           name: Release ${{ github.event_name == 'workflow_dispatch' && steps.version.outputs.tag || github.ref_name }}
           draft: false
           generate_release_notes: true
+          fail_on_unmatched_files: false
           files: |
             artifacts/**/*.dmg
             artifacts/**/*.zip
