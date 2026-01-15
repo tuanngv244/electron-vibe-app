@@ -103,7 +103,7 @@ const _checkElectronAppUpdated = () => {
 const initCore = () => {
   _syncInitialLoaderTheme()
   _handleSkinChanges()
-  // _checkElectronAppUpdated()
+  _checkElectronAppUpdated()
 
   // ℹ️ We don't want to trigger i18n in SK
   if (themeConfig.app.i18n.enable)
