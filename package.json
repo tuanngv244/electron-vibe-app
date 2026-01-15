@@ -11,10 +11,15 @@
     "electron:dev": "concurrently \"npm:dev:vue\" \"wait-on http://localhost:5173 && npm run dev:electron\"",
     "build:vue": "cd vibe-app && npm run build",
     "build:electron": "tsc && npm run build:vue && electron-builder",
+    "build:mac": "tsc && npm run build:vue && electron-builder --mac",
+    "build:win": "tsc && npm run build:vue && electron-builder --win",
+    "build:linux": "tsc && npm run build:vue && electron-builder --linux",
+    "build:all": "tsc && npm run build:vue && electron-builder --mac --win --linux",
     "create:mock-modules": "node create-mock-modules.js"
   },
   "build": {
-    "appId": "com.vibe.app",
+    "appId": "com.tuanngv.vibeapp",
+    "productName": "VibeApp",
     "files": [
       "dist/**/*",
       "vibe-app/dist/**/*",
@@ -27,14 +32,25 @@
       "vibe-app/dist/**/*"
     ],
     "mac": {
-      "target": "dmg"
+      "target": [
+        "dmg",
+        "zip"
+      ]
     },
     "win": {
       "target": "nsis"
     },
     "linux": {
       "target": "AppImage"
-    }
+    },
+    "publish": [
+      {
+        "provider": "gitlab",
+        "host": "gitlab.com",
+        "owner": "tuanngv244",
+        "repo": "electron-vibe-app"
+      }
+    ]
   },
   "keywords": [],
   "dependencies": {
