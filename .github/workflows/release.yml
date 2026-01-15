@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-    timeout-minutes: 30
     strategy:
-      fail-fast: false
       matrix:
         include:
           - os: macos-latest
@@ -48,8 +46,6 @@ jobs:
       - name: Build Electron app - macOS
         if: matrix.platform == 'mac'
         env:
-          # Skip code signing if no certificate provided
-          CSC_IDENTITY_AUTO_DISCOVERY: ${{ secrets.MAC_CERT != '' && 'true' || 'false' }}
           CSC_LINK: ${{ secrets.MAC_CERT }}
           CSC_KEY_PASSWORD: ${{ secrets.MAC_CERT_PASSWORD }}
           APPLE_ID: ${{ secrets.APPLE_ID }}

@@ -37,23 +37,13 @@
         "dmg",
         "zip"
       ],
-      "category": "public.app-category.productivity",
-      "identity": null,
-      "hardenedRuntime": false,
-      "gatekeeperAssess": false,
-      "entitlements": null,
-      "entitlementsInherit": null
+      "category": "public.app-category.productivity"
     },
     "win": {
       "target": [
         "nsis",
         "zip"
-      ],
-      "certificateSubjectName": null,
-      "signingHashAlgorithms": [
-        "sha256"
-      ],
-      "sign": null
+      ]
     },
     "linux": {
       "target": "AppImage"
