@@ -4,7 +4,16 @@ on:
   push:
     tags:
       - "v*"
-  workflow_dispatch: # Cho phép chạy manual từ GitHub UI
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: "Create GitHub Release?"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "true"
+          - "false"
 
 jobs:
   build:
@@ -88,9 +97,17 @@ jobs:
     name: Create GitHub Release
     needs: build
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
+    # Create release when: 1) tag push OR 2) manual run with create_release=true
+    if: |
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) ||
+      (github.event_name == 'workflow_dispatch' && inputs.create_release == 'true')
 
     steps:
+      - name: Get version for manual runs
+        if: github.event_name == 'workflow_dispatch'
+        id: version
+        run: echo "tag=v${{ github.run_number }}" >> $GITHUB_OUTPUT
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
@@ -102,6 +119,8 @@ jobs:
       - name: Create release and upload files
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.event_name == 'workflow_dispatch' && steps.version.outputs.tag || github.ref_name }}
+          name: Release ${{ github.event_name == 'workflow_dispatch' && steps.version.outputs.tag || github.ref_name }}
           draft: false
           generate_release_notes: true
           files: |
