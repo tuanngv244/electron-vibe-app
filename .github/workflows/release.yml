@@ -64,7 +64,7 @@ jobs:
           # Disable code signing if no certificate
           CSC_IDENTITY_AUTO_DISCOVERY: false
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx electron-builder --mac --publish never
+        run: npx electron-builder --mac --publish always
 
       - name: Build Electron app - Windows
         if: matrix.platform == 'win'
@@ -72,13 +72,13 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Disable code signing on Windows
           CSC_IDENTITY_AUTO_DISCOVERY: false
-        run: npx electron-builder --win --publish never
+        run: npx electron-builder --win --publish always
 
       - name: Build Electron app - Linux
         if: matrix.platform == 'linux'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx electron-builder --linux --publish never
+        run: npx electron-builder --linux --publish always
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -91,6 +91,8 @@ jobs:
             dist/*.AppImage
             dist/*.deb
             dist/*.rpm
+            dist/*.yml
+            dist/*.blockmap
           retention-days: 7
 
   release:
@@ -130,3 +132,5 @@ jobs:
             artifacts/**/*.AppImage
             artifacts/**/*.deb
             artifacts/**/*.rpm
+            artifacts/**/*.yml
+            artifacts/**/*.blockmap
