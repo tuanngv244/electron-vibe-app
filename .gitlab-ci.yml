@@ -14,9 +14,9 @@ build_electron:
 
     # Bước 2: Build Vue app
     - cd vibe-app
-    # Override postinstall to make it optional (CI doesn't need icons/msw init)
+    # Use npm install instead of npm ci for better dependency resolution
     - npm pkg set scripts.postinstall="echo 'Skipping postinstall in CI'"
-    - npm ci
+    - npm install --legacy-peer-deps
     - npm run build
     - cd ..
 
