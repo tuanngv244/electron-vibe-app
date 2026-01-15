@@ -14,7 +14,9 @@ build_electron:
 
     # Build Vue app
     - cd vibe-app
-    - npm ci
+    - npm ci --ignore-scripts
+    - npm run build:icons
+    - npm run msw:init
     - npm run build
     - cd ..
 
