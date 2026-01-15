@@ -5,32 +5,28 @@ stages:
 variables:
   NODE_ENV: production
 
-build_vue:
-  stage: build
-  image: node:20
-  script:
-    - npm ci
-    - cd vibe-app
-    - npm ci
-    - npm run build # build Vue → dist/
-    - cd ..
-    - mkdir -p dist/vue-dist
-    - cp -r vibe-app/dist/* dist/vue-dist
-  artifacts:
-    paths:
-      - dist/vue-dist
-
 build_electron:
   stage: build
   image: node:20
-  dependencies:
-    - build_vue
   script:
+    # Install root dependencies (electron, electron-builder, etc.)
     - npm ci
+
+    # Build Vue app
+    - cd vibe-app
+    - npm ci
+    - npm run build
+    - cd ..
+
+    # Compile TypeScript (main process)
+    - npx tsc
+
+    # Build Electron app for all platforms
     - npx electron-builder --win --mac --linux
   artifacts:
     paths:
-      - release/
+      - dist/**/*
+    expire_in: 1 week
 
 publish_release:
   stage: publish
@@ -38,6 +34,7 @@ publish_release:
   dependencies:
     - build_electron
   script:
+    - npm ci
     - npx electron-builder --publish always
   only:
     - main
