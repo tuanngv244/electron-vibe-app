@@ -14,9 +14,10 @@ build_electron:
 
     # Bước 2: Build Vue app
     - cd vibe-app
-    # Use npm install instead of npm ci for better dependency resolution
+    # Skip postinstall scripts (icons/msw not needed for production)
     - npm pkg set scripts.postinstall="echo 'Skipping postinstall in CI'"
-    - npm install --legacy-peer-deps
+    # Install all dependencies (handles missing package-lock.json gracefully)
+    - npm install --prefer-offline --no-audit
     - npm run build
     - cd ..
 
