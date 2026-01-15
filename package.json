@@ -18,7 +18,8 @@
     "create:mock-modules": "node create-mock-modules.js"
   },
   "build": {
-    "appId": "com.vibe.app",
+    "appId": "com.tuanngv.vibeapp",
+    "productName": "VibeApp",
     "files": [
       "dist/**/*",
       "vibe-app/dist/**/*",
@@ -31,14 +32,25 @@
       "vibe-app/dist/**/*"
     ],
     "mac": {
-      "target": "dmg"
+      "target": [
+        "dmg",
+        "zip"
+      ]
     },
     "win": {
       "target": "nsis"
     },
     "linux": {
       "target": "AppImage"
-    }
+    },
+    "publish": [
+      {
+        "provider": "gitlab",
+        "host": "gitlab.com",
+        "owner": "tuanngv244",
+        "repo": "electron-vibe-app"
+      }
+    ]
   },
   "keywords": [],
   "dependencies": {

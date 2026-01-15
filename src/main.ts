@@ -49,8 +49,9 @@ app.whenReady().then(() => {
     autoUpdater.checkForUpdatesAndNotify();
 });
 
+// autoUpdater.set
 
-/* ===== 5. Lắng nghe event autoUpdater ===== */
+
 autoUpdater.on('update-available', () => {
     mainWindow?.webContents.send('update-available')
 })
