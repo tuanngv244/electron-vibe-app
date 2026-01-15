@@ -14,7 +14,7 @@ build_electron:
 
     # Bước 2: Build Vue app
     - cd vibe-app
-    - npm ci --ignore-scripts
+    - npm install
     - npm run build
     - cd ..
 
