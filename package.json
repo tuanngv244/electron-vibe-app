@@ -11,7 +11,7 @@
     "electron:dev": "concurrently \"npm:dev:vue\" \"wait-on http://localhost:5173 && npm run dev:electron\"",
     "build:vue": "cd vibe-app && npm run build",
     "build:electron": "tsc && npm run build:vue && electron-builder",
-    "build:mac": "tsc && npm run build:vue && electron-builder --mac",
+    "build:mac": "tsc && npm run build:vue && electron-builder --mac --publish",
     "build:win": "tsc && npm run build:vue && electron-builder --win",
     "build:linux": "tsc && npm run build:vue && electron-builder --linux",
     "build:all": "tsc && npm run build:vue && electron-builder --mac --win --linux",
@@ -26,6 +26,7 @@
       "package.json"
     ],
     "directories": {
+      "output": "dist",
       "buildResources": "assets"
     },
     "asarUnpack": [
@@ -35,28 +36,29 @@
       "target": [
         "dmg",
         "zip"
-      ]
+      ],
+      "category": "public.app-category.productivity"
     },
     "win": {
-      "target": "nsis"
+      "target": [
+        "nsis",
+        "zip"
+      ]
     },
     "linux": {
       "target": "AppImage"
     },
     "publish": [
       {
-        "provider": "gitlab",
-        "host": "gitlab.com",
-        "owner": "tuanngv244",
-        "repo": "electron-vibe-app"
+        "provider": "generic",
+        "url": "https://github.com/tuanngv244/electron-vibe-app/releases/latest/download/"
       }
     ]
   },
   "keywords": [],
   "dependencies": {
     "adm-zip": "^0.5.10",
-    "electron-log": "^5.4.3",
-    "electron-updater": "^6.7.3"
+    "electron-log": "^5.4.3"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.5",
@@ -64,6 +66,7 @@
     "concurrently": "^9.2.1",
     "electron": "^39.2.7",
     "electron-builder": "^26.4.0",
+    "electron-updater": "^6.7.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "wait-on": "^9.0.3"

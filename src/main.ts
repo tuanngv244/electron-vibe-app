@@ -8,6 +8,7 @@ autoUpdater.logger = log;
 
 autoUpdater.logger.info('App starting...');
 
+
 let mainWindow: BrowserWindow | null;
 
 function createWindow() {
@@ -45,6 +46,11 @@ function createWindow() {
 
 app.whenReady().then(() => {
     createWindow();
+
+    autoUpdater.setFeedURL({
+        provider: 'generic',
+        url: 'https://github.com/tuanngv244/electron-vibe-app/releases/latest/download/'
+    })
 
     autoUpdater.checkForUpdatesAndNotify();
 });
