@@ -47,23 +47,44 @@ function createWindow() {
 app.whenReady().then(() => {
     createWindow();
 
-    autoUpdater.setFeedURL({
-        provider: 'generic',
-        url: 'https://github.com/tuanngv244/electron-vibe-app/releases/latest/download/'
-    })
-
-    autoUpdater.checkForUpdatesAndNotify();
+    // Only check for updates in production
+    if (process.env.NODE_ENV !== 'development') {
+        // electron-builder will use the publish config from package.json
+        setTimeout(() => {
+            autoUpdater.checkForUpdatesAndNotify();
+        }, 3000); // Wait 3 seconds for app to fully load
+    }
 });
 
-// autoUpdater.set
+// Auto-updater event listeners
+autoUpdater.on('checking-for-update', () => {
+    log.info('Checking for update...');
+    mainWindow?.webContents.send('checking-for-update');
+});
 
+autoUpdater.on('update-available', (info) => {
+    log.info('Update available:', info);
+    mainWindow?.webContents.send('update-available', info);
+});
 
-autoUpdater.on('update-available', () => {
-    mainWindow?.webContents.send('update-available')
-})
+autoUpdater.on('update-not-available', (info) => {
+    log.info('Update not available:', info);
+    mainWindow?.webContents.send('update-not-available', info);
+});
 
-autoUpdater.on('update-downloaded', () => {
-    mainWindow?.webContents.send('update-downloaded')
+autoUpdater.on('error', (err) => {
+    log.error('Error in auto-updater:', err);
+    mainWindow?.webContents.send('update-error', err.message);
+});
+
+autoUpdater.on('download-progress', (progressObj) => {
+    log.info('Download progress:', progressObj);
+    mainWindow?.webContents.send('download-progress', progressObj);
+});
+
+autoUpdater.on('update-downloaded', (info) => {
+    log.info('Update downloaded:', info);
+    mainWindow?.webContents.send('update-downloaded', info);
 })
 
 // IPC từ Vue để restart app
