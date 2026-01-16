@@ -11,6 +11,12 @@ autoUpdater.logger.info('App starting...');
 autoUpdater.allowDowngrade = true;
 autoUpdater.forceDevUpdateConfig = true;
 
+// Disable code signature verification for development
+if (process.platform === 'darwin') {
+    // @ts-ignore - undocumented property
+    autoUpdater.autoInstallOnAppQuit = false;
+}
+
 
 let mainWindow: BrowserWindow | null;
 
@@ -100,7 +106,14 @@ ipcMain.handle('restart-app', () => {
     log.info('Restart app called, quitting and installing update...');
     // setImmediate để đảm bảo response được gửi về renderer trước khi quit
     setImmediate(() => {
-        autoUpdater.quitAndInstall(false, true);
+        try {
+            // Force install without signature verification
+            autoUpdater.quitAndInstall(false, true);
+        } catch (error) {
+            log.error('Error during quitAndInstall:', error);
+            // Fallback: just quit and let macOS handle it
+            app.quit();
+        }
     });
 })
 

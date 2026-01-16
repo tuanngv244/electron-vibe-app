@@ -48,7 +48,7 @@ jobs:
         working-directory: vibe-app
         run: |
           npm pkg set scripts.postinstall="echo 'Skipping postinstall in CI'"
-          npm install --prefer-offline --no-audit --include=dev
+          npm install --prefer-offline --no-audit --include=dev --legacy-peer-deps || npm install --legacy-peer-deps || npm install
           npm run build
 
       - name: Compile TypeScript (Electron main process)
