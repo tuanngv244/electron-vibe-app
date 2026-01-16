@@ -38,7 +38,7 @@ import NavbarModuleManager from "./NavbarModuleManager.vue";
       <VSpacer />
 
       <NavSearchBar trigger-btn-class="ms-lg-n3" />
-      <!-- <NavbarModuleManager /> -->
+      <NavbarModuleManager />
       <NavBarI18n
         v-if="
           themeConfig.app.i18n.enable && themeConfig.app.i18n.langConfig?.length

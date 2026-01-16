@@ -34,7 +34,10 @@ import { VerticalNavLayout } from "@layouts";
         <VSpacer />
 
         <NavbarCalendar />
-        <!-- <NavbarModuleManager /> -->
+        <NavbarCalendar />
+        <NavbarCalendar />
+
+        <NavbarModuleManager />
         <NavBarI18n
           v-if="
             themeConfig.app.i18n.enable &&
