@@ -37,7 +37,9 @@
         "dmg",
         "zip"
       ],
-      "category": "public.app-category.productivity"
+      "category": "public.app-category.productivity",
+      "gatekeeperAssess": false,
+      "hardenedRuntime": false
     },
     "win": {
       "target": [

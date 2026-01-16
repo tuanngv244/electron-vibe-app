@@ -5,8 +5,11 @@ import { autoUpdater } from 'electron-updater';
 import log from "electron-log";
 
 autoUpdater.logger = log;
-
 autoUpdater.logger.info('App starting...');
+
+// Allow unsigned apps for development/testing
+autoUpdater.allowDowngrade = true;
+autoUpdater.forceDevUpdateConfig = true;
 
 
 let mainWindow: BrowserWindow | null;
