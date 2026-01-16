@@ -7,17 +7,6 @@ import log from "electron-log";
 autoUpdater.logger = log;
 autoUpdater.logger.info('App starting...');
 
-// Allow unsigned apps for development/testing
-autoUpdater.allowDowngrade = true;
-autoUpdater.forceDevUpdateConfig = true;
-
-// Disable code signature verification for development
-if (process.platform === 'darwin') {
-    // @ts-ignore - undocumented property
-    autoUpdater.autoInstallOnAppQuit = false;
-}
-
-
 let mainWindow: BrowserWindow | null;
 
 function createWindow() {
@@ -64,9 +53,9 @@ app.whenReady().then(() => {
         }, 3000); // Wait 3 seconds for app to fully load
 
         // Check for updates every 5 minutes
-        setInterval(() => {
-            autoUpdater.checkForUpdatesAndNotify();
-        }, 5 * 60 * 1000); // 5 minutes
+        // setInterval(() => {
+        //     autoUpdater.checkForUpdatesAndNotify();
+        // }, 5 * 60 * 1000); // 5 minutes
     }
 });
 

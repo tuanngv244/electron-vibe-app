@@ -93,11 +93,8 @@ const _checkElectronAppUpdated = () => {
 
   // Listen for update downloaded event
   window.electronAPI.onUpdateDownloaded(() => {
-    console.log('🎉 Update downloaded!')
     const shouldRestart = confirm('Có phiên bản mới đã được tải về. Bạn có muốn khởi động lại ứng dụng để cập nhật không?')
-    console.log('User choice:', shouldRestart)
     if (shouldRestart) {
-      console.log('Calling restartApp...')
       window.electronAPI.restartApp()
         .then(() => console.log('RestartApp called successfully'))
         .catch(err => console.error('RestartApp error:', err))
