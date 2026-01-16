@@ -53,6 +53,11 @@ app.whenReady().then(() => {
         setTimeout(() => {
             autoUpdater.checkForUpdatesAndNotify();
         }, 3000); // Wait 3 seconds for app to fully load
+
+        // Check for updates every 5 minutes
+        setInterval(() => {
+            autoUpdater.checkForUpdatesAndNotify();
+        }, 5 * 60 * 1000); // 5 minutes
     }
 });
 
