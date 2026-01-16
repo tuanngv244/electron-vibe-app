@@ -94,7 +94,11 @@ autoUpdater.on('update-downloaded', (info) => {
 
 // IPC từ Vue để restart app
 ipcMain.handle('restart-app', () => {
-    autoUpdater.quitAndInstall()
+    log.info('Restart app called, quitting and installing update...');
+    // setImmediate để đảm bảo response được gửi về renderer trước khi quit
+    setImmediate(() => {
+        autoUpdater.quitAndInstall(false, true);
+    });
 })
 
 app.on('window-all-closed', () => {
