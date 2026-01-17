@@ -14,9 +14,9 @@ import {
   STATUS_VARIANT_MAP,
   EMPLOYEE_TYPE_COLOR_MAP,
 } from "../consts";
-import EmployeeStatsRow from "../components/EmployeeStatsRow.vue";
-import EmployeeFilters from "../components/EmployeeFilters.vue";
-import EmployeeListHeader from "../components/EmployeeListHeader.vue";
+import EmployeeStatsRow from "./components/EmployeeStatsRow.vue";
+import EmployeeFilters from "./components/EmployeeFilters.vue";
+import EmployeeListHeader from "./components/EmployeeListHeader.vue";
 
 definePage({
   meta: {

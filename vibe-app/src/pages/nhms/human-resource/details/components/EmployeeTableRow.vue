@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Employee } from "@/types/nhms/human-resource";
-import { STATUS_VARIANT_MAP, EMPLOYEE_TYPE_COLOR_MAP } from "../consts";
+import { STATUS_VARIANT_MAP, EMPLOYEE_TYPE_COLOR_MAP } from "../../consts";
 
 interface Props {
   employee: Employee;

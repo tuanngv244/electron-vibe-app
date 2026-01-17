@@ -5,7 +5,7 @@ import {
   EmployeeType,
   ShiftType,
 } from "@/types/nhms/human-resource";
-import { ROLES, DEPARTMENTS } from "../consts";
+import { ROLES, DEPARTMENTS } from "../../consts";
 
 interface Props {
   modelValue: EmployeeListFilters;

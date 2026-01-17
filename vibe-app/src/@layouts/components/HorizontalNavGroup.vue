@@ -64,7 +64,6 @@ watch(
   },
   { immediate: true }
 );
-
 </script>
 
 <template>
@@ -134,6 +133,7 @@ watch(
 
     .popper-content {
       z-index: 1;
+      padding: 0;
 
       > div {
         overflow: hidden auto;

@@ -14,6 +14,7 @@ import NavBarI18n from "@core/components/I18n.vue";
 import { HorizontalNavLayout } from "@layouts";
 import { VNodeRenderer } from "@layouts/components/VNodeRenderer";
 import NavbarModuleManager from "./NavbarModuleManager.vue";
+import NavbarCalendar from "./NavbarCalendar.vue";
 </script>
 
 <template>
@@ -39,6 +40,7 @@ import NavbarModuleManager from "./NavbarModuleManager.vue";
 
       <NavSearchBar trigger-btn-class="ms-lg-n3" />
       <!-- <NavbarModuleManager /> -->
+      <NavbarCalendar />
       <NavBarI18n
         v-if="
           themeConfig.app.i18n.enable && themeConfig.app.i18n.langConfig?.length

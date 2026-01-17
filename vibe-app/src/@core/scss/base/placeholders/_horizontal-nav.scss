@@ -90,9 +90,8 @@
   @include mixins.elevation(4);
 
   border-radius: 6px;
-  padding-block: 0.3rem;
 
-  > div {
+  >div {
     @extend %style-scroll-bar;
   }
 }

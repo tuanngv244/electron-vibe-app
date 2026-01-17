@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { EmployeeFormData } from "@/types/nhms/human-resource";
 import {
   EmployeeStatus,
   EmployeeType,
@@ -8,8 +7,8 @@ import {
   MaritalStatus,
 } from "@/types/nhms/human-resource";
 import { DEFAULT_EMPLOYEE_FORM, EMPLOYEE_DETAIL_TABS } from "../consts";
-import EmployeeBioCard from "../components/EmployeeBioCard.vue";
-import EmployeeStatsCard from "../components/EmployeeStatsCard.vue";
+import EmployeeBioCard from "./components/EmployeeBioCard.vue";
+import EmployeeStatsCard from "./components/EmployeeStatsCard.vue";
 import PersonalInfoForm from "./components/PersonalInfoForm.vue";
 import EmploymentInfoForm from "./components/EmploymentInfoForm.vue";
 import CertificationsManager from "./components/CertificationsManager.vue";

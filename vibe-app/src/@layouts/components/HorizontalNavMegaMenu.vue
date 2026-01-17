@@ -45,7 +45,6 @@ const handleSubmenuHover = (index: number) => {
   hoveredSubmenuIndex.value = index;
 };
 
-
 // Auto-select first item on mount
 onMounted(() => {
   if (props.item.children.length > 0) {
@@ -74,10 +73,6 @@ const filteredChildren = computed(() => {
     return false;
   });
 });
-
-
-
-
 </script>
 
 <template>
@@ -196,7 +191,7 @@ const filteredChildren = computed(() => {
     flex-direction: column;
 
     .mega-menu-search {
-      padding: 16px 20px;
+      padding: 12px 16px;
       border-block-end: 1px solid
         rgba(var(--v-border-color), var(--v-border-opacity));
       display: flex;
@@ -256,7 +251,7 @@ const filteredChildren = computed(() => {
 
     .mega-menu-item {
       padding-block: 14px;
-      padding-inline: 24px;
+      padding-inline: 16px;
       cursor: pointer;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
@@ -333,11 +328,11 @@ const filteredChildren = computed(() => {
 
   .mega-menu-right {
     flex: 1;
-    padding: 24px 28px;
     min-inline-size: 380px;
     max-inline-size: 500px;
     background: rgb(var(--v-theme-surface));
     overflow-y: auto;
+    overflow-x: hidden;
 
     &::-webkit-scrollbar {
       inline-size: 6px;
@@ -359,7 +354,6 @@ const filteredChildren = computed(() => {
 
   .mega-menu-right {
     flex: 1;
-    padding: 24px 28px;
     min-inline-size: 380px;
     max-inline-size: 500px;
     background: rgb(var(--v-theme-surface));
@@ -386,25 +380,26 @@ const filteredChildren = computed(() => {
       animation: fadeInUp 0.3s ease;
 
       .mega-menu-submenu-title {
-        font-size: 17px;
+        font-size: 16px;
         font-weight: 700;
-        margin-block-end: 20px;
         color: rgb(var(--v-theme-on-surface));
-        padding-block-end: 14px;
-        border-block-end: 2px solid rgba(var(--v-theme-primary), 0.2);
+        padding: 12px 16px;
+        border-block-end: 1px solid rgba(var(--v-theme-primary), 0.2);
         letter-spacing: 0.2px;
+        height: 46px;
       }
 
       .mega-menu-submenu-items {
         display: flex;
         flex-direction: column;
         gap: 2px;
+        padding: 12px 16px;
 
         .mega-menu-subitem {
           .nav-link a {
             padding-block: 12px;
             padding-inline: 18px;
-            border-radius: 8px;
+            border-radius: 4px;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: rgb(var(--v-theme-on-surface));
@@ -454,7 +449,7 @@ const filteredChildren = computed(() => {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateX(10px);
   }
   to {
     opacity: 1;
