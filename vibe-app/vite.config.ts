@@ -116,4 +116,17 @@ export default defineConfig({
       './src/**/*.vue',
     ],
   },
+  server: {
+    proxy: {
+      '/dev-api': {
+        // target: 'http://42.115.115.130:8080',
+        target: 'http://192.168.57.85:8080', // new API local
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(new RegExp(`^/dev-api`), ''),
+        // only https
+        // secure: false
+      },
+    }
+  }
 })

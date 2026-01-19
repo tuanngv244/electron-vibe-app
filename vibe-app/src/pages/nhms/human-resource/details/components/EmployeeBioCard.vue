@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Employee } from "@/types/nhms/human-resource";
+import type { Employee } from '@/types/nhms/human-resource';
 
 interface Props {
   employee: Employee;
@@ -18,9 +18,7 @@ defineProps<Props>();
         class="mb-4"
       >
         <VImg v-if="employee.avatar" :src="employee.avatar" />
-        <span v-else class="text-h3"
-          >{{ employee.firstName[0] }}{{ employee.lastName[0] }}</span
-        >
+        <span v-else class="text-h3">{{ employee.firstName[0] }}{{ employee.lastName[0] }}</span>
       </VAvatar>
 
       <h4 class="text-h4 mb-1">

@@ -145,11 +145,11 @@ export interface EmployeeFormData extends Omit<Employee, 'id' | 'fullName'> {
 
 export interface EmployeeListFilters {
     searchQuery: string
-    role?: string
-    department?: string
-    status?: EmployeeStatus | ''
-    employeeType?: EmployeeType | ''
-    shiftType?: ShiftType | ''
+    role?: string | null
+    department?: string | null
+    status?: EmployeeStatus | null
+    employeeType?: EmployeeType | null
+    shiftType?: ShiftType | null
 }
 
 export interface EmployeeStats {

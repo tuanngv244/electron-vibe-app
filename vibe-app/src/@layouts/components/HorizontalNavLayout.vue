@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { HorizontalNav } from "@layouts/components";
-import type { HorizontalNavItems } from "@layouts/types";
+import { HorizontalNav } from '@layouts/components';
+import type { HorizontalNavItems } from '@layouts/types';
 
 // ℹ️ Using import from `@layouts` causing build to hangup
 // import { useLayouts } from '@layouts'
-import { useLayoutConfigStore } from "@layouts/stores/config";
+import { useLayoutConfigStore } from '@layouts/stores/config';
 
 defineProps<{
   navItems: HorizontalNavItems;
@@ -47,9 +47,9 @@ const configStore = useLayoutConfigStore();
 </template>
 
 <style lang="scss">
-@use "@configured-variables" as variables;
-@use "@layouts/styles/placeholders";
-@use "@layouts/styles/mixins";
+@use '@configured-variables' as variables;
+@use '@layouts/styles/placeholders';
+@use '@layouts/styles/mixins';
 
 .layout-wrapper {
   &.layout-nav-type-horizontal {
@@ -121,6 +121,18 @@ const configStore = useLayoutConfigStore();
   &.layout-navbar-hidden.horizontal-nav-hidden {
     .layout-navbar-and-nav-container {
       display: none;
+    }
+  }
+
+  .layout-page-content {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: calc(100vh - 70px);
+    @extend %style-scroll-bar;
+    &::-webkit-scrollbar {
+      block-size: 6px;
+      inline-size: 6px;
+      border-radius: 0;
     }
   }
 }

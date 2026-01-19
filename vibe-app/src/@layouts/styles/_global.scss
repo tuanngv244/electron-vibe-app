@@ -7,4 +7,9 @@
 
 html {
   box-sizing: border-box;
+  overflow: hidden !important;
+}
+
+body {
+  overflow: hidden;
 }

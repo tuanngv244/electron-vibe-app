@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useModules } from "@/composables/useModules";
+import { ref } from 'vue';
+import { useModules } from '@/composables/useModules';
 
 const isDialogVisible = ref(false);
 const isElectron = window && window.electronAPI;
@@ -8,9 +8,9 @@ const { modules, isLoading, error, downloadModule } = useModules();
 
 const formatModuleName = (name: string): string => {
   return name
-    .split("-")
+    .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+    .join(' ');
 };
 
 const pendingCount = computed(() => {
@@ -52,18 +52,10 @@ const pendingCount = computed(() => {
         <VDivider />
 
         <VCardText class="pa-6" style="max-height: 600px">
-          <p class="text-body-1 mb-6">
-            Manage and download application modules
-          </p>
+          <p class="text-body-1 mb-6">Manage and download application modules</p>
 
           <!-- Error Alert -->
-          <VAlert
-            v-if="error"
-            type="error"
-            variant="tonal"
-            class="mb-4"
-            closable
-          >
+          <VAlert v-if="error" type="error" variant="tonal" class="mb-4" closable>
             {{ error }}
           </VAlert>
 
@@ -87,7 +79,7 @@ const pendingCount = computed(() => {
                       size="small"
                       variant="tonal"
                     >
-                      {{ module.installed ? "Installed" : "Not Installed" }}
+                      {{ module.installed ? 'Installed' : 'Not Installed' }}
                     </VChip>
                   </div>
 
@@ -135,12 +127,7 @@ const pendingCount = computed(() => {
                     block
                     disabled
                   >
-                    <VProgressCircular
-                      indeterminate
-                      size="16"
-                      width="2"
-                      class="me-2"
-                    />
+                    <VProgressCircular indeterminate size="16" width="2" class="me-2" />
                     Downloading... {{ Math.round(module.progress * 100) }}%
                   </VBtn>
 
@@ -168,9 +155,7 @@ const pendingCount = computed(() => {
                     color="disabled"
                     class="mb-4"
                   />
-                  <p class="text-body-1 text-medium-emphasis">
-                    No modules available
-                  </p>
+                  <p class="text-body-1 text-medium-emphasis">No modules available</p>
                 </VCardText>
               </VCard>
             </VCol>
